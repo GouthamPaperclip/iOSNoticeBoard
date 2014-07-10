@@ -22,6 +22,17 @@
 		7DABCC6D19690B6F0066C0ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DABCC4C19690B6F0066C0ED /* UIKit.framework */; };
 		7DABCC7519690B6F0066C0ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DABCC7319690B6F0066C0ED /* InfoPlist.strings */; };
 		7DABCC7719690B6F0066C0ED /* Notice_BoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DABCC7619690B6F0066C0ED /* Notice_BoardTests.m */; };
+		7DABCC84196915870066C0ED /* Line1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DABCC83196915870066C0ED /* Line1.png */; };
+		7DB04227196E5C7D00910446 /* BEMAnalogClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB0421E196E5C7D00910446 /* BEMAnalogClockView.m */; };
+		7DB04228196E5C7D00910446 /* BEMHandsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB04220196E5C7D00910446 /* BEMHandsAnimation.m */; };
+		7DB04229196E5C7D00910446 /* BEMHourHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB04222196E5C7D00910446 /* BEMHourHand.m */; };
+		7DB0422A196E5C7D00910446 /* BEMMinuteHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB04224196E5C7D00910446 /* BEMMinuteHand.m */; };
+		7DB0422B196E5C7D00910446 /* BEMSecondHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB04226196E5C7D00910446 /* BEMSecondHand.m */; };
+		7DDCF60A1969276F00056FF3 /* ClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDCF6091969276F00056FF3 /* ClockView.m */; };
+		7DDCF611196928A600056FF3 /* Hour Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCF60D196928A600056FF3 /* Hour Hand.png */; };
+		7DDCF612196928A600056FF3 /* Minute Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCF60E196928A600056FF3 /* Minute Hand.png */; };
+		7DDCF613196928A600056FF3 /* Second Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCF60F196928A600056FF3 /* Second Hand.png */; };
+		7DDCF61519692DB700056FF3 /* Clock_Background_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCF61419692DB700056FF3 /* Clock_Background_Black.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +66,23 @@
 		7DABCC7219690B6F0066C0ED /* Notice BoardTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Notice BoardTests-Info.plist"; sourceTree = "<group>"; };
 		7DABCC7419690B6F0066C0ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7DABCC7619690B6F0066C0ED /* Notice_BoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notice_BoardTests.m; sourceTree = "<group>"; };
+		7DABCC83196915870066C0ED /* Line1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Line1.png; path = Images/ScreenSaver/Line1.png; sourceTree = "<group>"; };
+		7DB0421D196E5C7D00910446 /* BEMAnalogClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMAnalogClockView.h; path = "Clock Files/BEMAnalogClockView.h"; sourceTree = "<group>"; };
+		7DB0421E196E5C7D00910446 /* BEMAnalogClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMAnalogClockView.m; path = "Clock Files/BEMAnalogClockView.m"; sourceTree = "<group>"; };
+		7DB0421F196E5C7D00910446 /* BEMHandsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMHandsAnimation.h; path = "Clock Files/BEMHandsAnimation.h"; sourceTree = "<group>"; };
+		7DB04220196E5C7D00910446 /* BEMHandsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMHandsAnimation.m; path = "Clock Files/BEMHandsAnimation.m"; sourceTree = "<group>"; };
+		7DB04221196E5C7D00910446 /* BEMHourHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMHourHand.h; path = "Clock Files/BEMHourHand.h"; sourceTree = "<group>"; };
+		7DB04222196E5C7D00910446 /* BEMHourHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMHourHand.m; path = "Clock Files/BEMHourHand.m"; sourceTree = "<group>"; };
+		7DB04223196E5C7D00910446 /* BEMMinuteHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMMinuteHand.h; path = "Clock Files/BEMMinuteHand.h"; sourceTree = "<group>"; };
+		7DB04224196E5C7D00910446 /* BEMMinuteHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMMinuteHand.m; path = "Clock Files/BEMMinuteHand.m"; sourceTree = "<group>"; };
+		7DB04225196E5C7D00910446 /* BEMSecondHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMSecondHand.h; path = "Clock Files/BEMSecondHand.h"; sourceTree = "<group>"; };
+		7DB04226196E5C7D00910446 /* BEMSecondHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMSecondHand.m; path = "Clock Files/BEMSecondHand.m"; sourceTree = "<group>"; };
+		7DDCF6081969276F00056FF3 /* ClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClockView.h; path = "Clock Files/ClockView.h"; sourceTree = "<group>"; };
+		7DDCF6091969276F00056FF3 /* ClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClockView.m; path = "Clock Files/ClockView.m"; sourceTree = "<group>"; };
+		7DDCF60D196928A600056FF3 /* Hour Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Hour Hand.png"; path = "Images/Clock Images/Hour Hand.png"; sourceTree = "<group>"; };
+		7DDCF60E196928A600056FF3 /* Minute Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Minute Hand.png"; path = "Images/Clock Images/Minute Hand.png"; sourceTree = "<group>"; };
+		7DDCF60F196928A600056FF3 /* Second Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Second Hand.png"; path = "Images/Clock Images/Second Hand.png"; sourceTree = "<group>"; };
+		7DDCF61419692DB700056FF3 /* Clock_Background_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Clock_Background_Black.png; path = "Images/Clock Images/Clock_Background_Black.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +142,8 @@
 		7DABCC4E19690B6F0066C0ED /* Notice Board */ = {
 			isa = PBXGroup;
 			children = (
+				7DABCC85196923970066C0ED /* Clock Files */,
+				7DABCC801969109A0066C0ED /* Images */,
 				7DABCC5719690B6F0066C0ED /* AppDelegate.h */,
 				7DABCC5819690B6F0066C0ED /* AppDelegate.m */,
 				7DABCC5A19690B6F0066C0ED /* Main_iPhone.storyboard */,
@@ -153,6 +183,45 @@
 				7DABCC7319690B6F0066C0ED /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7DABCC801969109A0066C0ED /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7DDCF60B1969284A00056FF3 /* Clock Images */,
+				7DABCC83196915870066C0ED /* Line1.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		7DABCC85196923970066C0ED /* Clock Files */ = {
+			isa = PBXGroup;
+			children = (
+				7DDCF6081969276F00056FF3 /* ClockView.h */,
+				7DDCF6091969276F00056FF3 /* ClockView.m */,
+				7DB0421D196E5C7D00910446 /* BEMAnalogClockView.h */,
+				7DB0421E196E5C7D00910446 /* BEMAnalogClockView.m */,
+				7DB0421F196E5C7D00910446 /* BEMHandsAnimation.h */,
+				7DB04220196E5C7D00910446 /* BEMHandsAnimation.m */,
+				7DB04221196E5C7D00910446 /* BEMHourHand.h */,
+				7DB04222196E5C7D00910446 /* BEMHourHand.m */,
+				7DB04223196E5C7D00910446 /* BEMMinuteHand.h */,
+				7DB04224196E5C7D00910446 /* BEMMinuteHand.m */,
+				7DB04225196E5C7D00910446 /* BEMSecondHand.h */,
+				7DB04226196E5C7D00910446 /* BEMSecondHand.m */,
+			);
+			name = "Clock Files";
+			sourceTree = "<group>";
+		};
+		7DDCF60B1969284A00056FF3 /* Clock Images */ = {
+			isa = PBXGroup;
+			children = (
+				7DDCF60D196928A600056FF3 /* Hour Hand.png */,
+				7DDCF60E196928A600056FF3 /* Minute Hand.png */,
+				7DDCF60F196928A600056FF3 /* Second Hand.png */,
+				7DDCF61419692DB700056FF3 /* Clock_Background_Black.png */,
+			);
+			name = "Clock Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +301,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DABCC5F19690B6F0066C0ED /* Main_iPad.storyboard in Resources */,
+				7DDCF613196928A600056FF3 /* Second Hand.png in Resources */,
+				7DDCF61519692DB700056FF3 /* Clock_Background_Black.png in Resources */,
 				7DABCC6419690B6F0066C0ED /* Images.xcassets in Resources */,
+				7DDCF611196928A600056FF3 /* Hour Hand.png in Resources */,
+				7DABCC84196915870066C0ED /* Line1.png in Resources */,
 				7DABCC5C19690B6F0066C0ED /* Main_iPhone.storyboard in Resources */,
 				7DABCC5319690B6F0066C0ED /* InfoPlist.strings in Resources */,
+				7DDCF612196928A600056FF3 /* Minute Hand.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,8 +328,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DABCC6219690B6F0066C0ED /* ViewController.m in Sources */,
+				7DDCF60A1969276F00056FF3 /* ClockView.m in Sources */,
+				7DB04228196E5C7D00910446 /* BEMHandsAnimation.m in Sources */,
+				7DB0422A196E5C7D00910446 /* BEMMinuteHand.m in Sources */,
 				7DABCC5919690B6F0066C0ED /* AppDelegate.m in Sources */,
+				7DB04227196E5C7D00910446 /* BEMAnalogClockView.m in Sources */,
+				7DB0422B196E5C7D00910446 /* BEMSecondHand.m in Sources */,
 				7DABCC5519690B6F0066C0ED /* main.m in Sources */,
+				7DB04229196E5C7D00910446 /* BEMHourHand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +550,7 @@
 				7DABCC7C19690B6F0066C0ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7DABCC7D19690B6F0066C0ED /* Build configuration list for PBXNativeTarget "Notice BoardTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +559,7 @@
 				7DABCC7F19690B6F0066C0ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

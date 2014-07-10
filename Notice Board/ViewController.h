@@ -8,6 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+#import "ClockView.h"
+#import "BEMAnalogClockView.h"
+
+@interface ViewController : UIViewController<BEMAnalogClockDelegate, BEMAnimationDelegate>
+{
+    ClockView *clockViewMelborne;
+    ClockView *clockViewIndia;
+    
+    BEMAnalogClockView *clockViewBEM;
+}
+
+//Labels Screen savers
+@property(nonatomic,strong) IBOutlet UILabel *lblMeeting;
+@property(nonatomic,strong) IBOutlet UILabel *lblTasks;
+@property(nonatomic,strong) IBOutlet UILabel *lblIn;
+@property(nonatomic,strong) IBOutlet UILabel *lblOut;
+
+
+//Check In/Out method
+
+-(IBAction)checkInOutAction:(id)sender;
 
 @end
