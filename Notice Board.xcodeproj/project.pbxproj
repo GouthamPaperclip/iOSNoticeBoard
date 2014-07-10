@@ -15,7 +15,6 @@
 		7DABCC5919690B6F0066C0ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DABCC5819690B6F0066C0ED /* AppDelegate.m */; };
 		7DABCC5C19690B6F0066C0ED /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DABCC5A19690B6F0066C0ED /* Main_iPhone.storyboard */; };
 		7DABCC5F19690B6F0066C0ED /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DABCC5D19690B6F0066C0ED /* Main_iPad.storyboard */; };
-		7DABCC6219690B6F0066C0ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DABCC6119690B6F0066C0ED /* ViewController.m */; };
 		7DABCC6419690B6F0066C0ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DABCC6319690B6F0066C0ED /* Images.xcassets */; };
 		7DABCC6B19690B6F0066C0ED /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DABCC6A19690B6F0066C0ED /* XCTest.framework */; };
 		7DABCC6C19690B6F0066C0ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DABCC4819690B6F0066C0ED /* Foundation.framework */; };
@@ -28,11 +27,9 @@
 		7DB04229196E5C7D00910446 /* BEMHourHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB04222196E5C7D00910446 /* BEMHourHand.m */; };
 		7DB0422A196E5C7D00910446 /* BEMMinuteHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB04224196E5C7D00910446 /* BEMMinuteHand.m */; };
 		7DB0422B196E5C7D00910446 /* BEMSecondHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB04226196E5C7D00910446 /* BEMSecondHand.m */; };
-		7DDCF60A1969276F00056FF3 /* ClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDCF6091969276F00056FF3 /* ClockView.m */; };
-		7DDCF611196928A600056FF3 /* Hour Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCF60D196928A600056FF3 /* Hour Hand.png */; };
-		7DDCF612196928A600056FF3 /* Minute Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCF60E196928A600056FF3 /* Minute Hand.png */; };
-		7DDCF613196928A600056FF3 /* Second Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCF60F196928A600056FF3 /* Second Hand.png */; };
-		7DDCF61519692DB700056FF3 /* Clock_Background_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDCF61419692DB700056FF3 /* Clock_Background_Black.png */; };
+		7DB1B738196E91B200679C88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB1B737196E91B200679C88 /* ViewController.m */; };
+		7DB1B73B196E97BB00679C88 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB1B73A196E97BB00679C88 /* LoginViewController.m */; };
+		7DB1B73E196E9C9B00679C88 /* PIQRCodeReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB1B73D196E9C9B00679C88 /* PIQRCodeReaderViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +55,6 @@
 		7DABCC5819690B6F0066C0ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7DABCC5B19690B6F0066C0ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		7DABCC5E19690B6F0066C0ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		7DABCC6019690B6F0066C0ED /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7DABCC6119690B6F0066C0ED /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7DABCC6319690B6F0066C0ED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7DABCC6919690B6F0066C0ED /* Notice BoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Notice BoardTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DABCC6A19690B6F0066C0ED /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -77,12 +72,12 @@
 		7DB04224196E5C7D00910446 /* BEMMinuteHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMMinuteHand.m; path = "Clock Files/BEMMinuteHand.m"; sourceTree = "<group>"; };
 		7DB04225196E5C7D00910446 /* BEMSecondHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMSecondHand.h; path = "Clock Files/BEMSecondHand.h"; sourceTree = "<group>"; };
 		7DB04226196E5C7D00910446 /* BEMSecondHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMSecondHand.m; path = "Clock Files/BEMSecondHand.m"; sourceTree = "<group>"; };
-		7DDCF6081969276F00056FF3 /* ClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClockView.h; path = "Clock Files/ClockView.h"; sourceTree = "<group>"; };
-		7DDCF6091969276F00056FF3 /* ClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClockView.m; path = "Clock Files/ClockView.m"; sourceTree = "<group>"; };
-		7DDCF60D196928A600056FF3 /* Hour Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Hour Hand.png"; path = "Images/Clock Images/Hour Hand.png"; sourceTree = "<group>"; };
-		7DDCF60E196928A600056FF3 /* Minute Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Minute Hand.png"; path = "Images/Clock Images/Minute Hand.png"; sourceTree = "<group>"; };
-		7DDCF60F196928A600056FF3 /* Second Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Second Hand.png"; path = "Images/Clock Images/Second Hand.png"; sourceTree = "<group>"; };
-		7DDCF61419692DB700056FF3 /* Clock_Background_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Clock_Background_Black.png; path = "Images/Clock Images/Clock_Background_Black.png"; sourceTree = "<group>"; };
+		7DB1B736196E91B200679C88 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ViewController.h; sourceTree = "<group>"; };
+		7DB1B737196E91B200679C88 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ViewController.m; sourceTree = "<group>"; };
+		7DB1B739196E97BB00679C88 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/LoginViewController.h; sourceTree = "<group>"; };
+		7DB1B73A196E97BB00679C88 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/LoginViewController.m; sourceTree = "<group>"; };
+		7DB1B73C196E9C9B00679C88 /* PIQRCodeReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIQRCodeReaderViewController.h; sourceTree = "<group>"; };
+		7DB1B73D196E9C9B00679C88 /* PIQRCodeReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIQRCodeReaderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,15 +137,14 @@
 		7DABCC4E19690B6F0066C0ED /* Notice Board */ = {
 			isa = PBXGroup;
 			children = (
-				7DABCC85196923970066C0ED /* Clock Files */,
-				7DABCC801969109A0066C0ED /* Images */,
 				7DABCC5719690B6F0066C0ED /* AppDelegate.h */,
 				7DABCC5819690B6F0066C0ED /* AppDelegate.m */,
 				7DABCC5A19690B6F0066C0ED /* Main_iPhone.storyboard */,
 				7DABCC5D19690B6F0066C0ED /* Main_iPad.storyboard */,
-				7DABCC6019690B6F0066C0ED /* ViewController.h */,
-				7DABCC6119690B6F0066C0ED /* ViewController.m */,
 				7DABCC6319690B6F0066C0ED /* Images.xcassets */,
+				7DABCC85196923970066C0ED /* Clock Files */,
+				7DABCC801969109A0066C0ED /* Images */,
+				7DB1B735196E917D00679C88 /* ViewControllers */,
 				7DABCC4F19690B6F0066C0ED /* Supporting Files */,
 			);
 			path = "Notice Board";
@@ -188,7 +182,6 @@
 		7DABCC801969109A0066C0ED /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				7DDCF60B1969284A00056FF3 /* Clock Images */,
 				7DABCC83196915870066C0ED /* Line1.png */,
 			);
 			name = Images;
@@ -197,8 +190,6 @@
 		7DABCC85196923970066C0ED /* Clock Files */ = {
 			isa = PBXGroup;
 			children = (
-				7DDCF6081969276F00056FF3 /* ClockView.h */,
-				7DDCF6091969276F00056FF3 /* ClockView.m */,
 				7DB0421D196E5C7D00910446 /* BEMAnalogClockView.h */,
 				7DB0421E196E5C7D00910446 /* BEMAnalogClockView.m */,
 				7DB0421F196E5C7D00910446 /* BEMHandsAnimation.h */,
@@ -213,15 +204,17 @@
 			name = "Clock Files";
 			sourceTree = "<group>";
 		};
-		7DDCF60B1969284A00056FF3 /* Clock Images */ = {
+		7DB1B735196E917D00679C88 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7DDCF60D196928A600056FF3 /* Hour Hand.png */,
-				7DDCF60E196928A600056FF3 /* Minute Hand.png */,
-				7DDCF60F196928A600056FF3 /* Second Hand.png */,
-				7DDCF61419692DB700056FF3 /* Clock_Background_Black.png */,
+				7DB1B736196E91B200679C88 /* ViewController.h */,
+				7DB1B737196E91B200679C88 /* ViewController.m */,
+				7DB1B739196E97BB00679C88 /* LoginViewController.h */,
+				7DB1B73A196E97BB00679C88 /* LoginViewController.m */,
+				7DB1B73C196E9C9B00679C88 /* PIQRCodeReaderViewController.h */,
+				7DB1B73D196E9C9B00679C88 /* PIQRCodeReaderViewController.m */,
 			);
-			name = "Clock Images";
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,14 +294,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DABCC5F19690B6F0066C0ED /* Main_iPad.storyboard in Resources */,
-				7DDCF613196928A600056FF3 /* Second Hand.png in Resources */,
-				7DDCF61519692DB700056FF3 /* Clock_Background_Black.png in Resources */,
 				7DABCC6419690B6F0066C0ED /* Images.xcassets in Resources */,
-				7DDCF611196928A600056FF3 /* Hour Hand.png in Resources */,
 				7DABCC84196915870066C0ED /* Line1.png in Resources */,
 				7DABCC5C19690B6F0066C0ED /* Main_iPhone.storyboard in Resources */,
 				7DABCC5319690B6F0066C0ED /* InfoPlist.strings in Resources */,
-				7DDCF612196928A600056FF3 /* Minute Hand.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,14 +316,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DABCC6219690B6F0066C0ED /* ViewController.m in Sources */,
-				7DDCF60A1969276F00056FF3 /* ClockView.m in Sources */,
 				7DB04228196E5C7D00910446 /* BEMHandsAnimation.m in Sources */,
 				7DB0422A196E5C7D00910446 /* BEMMinuteHand.m in Sources */,
+				7DB1B738196E91B200679C88 /* ViewController.m in Sources */,
 				7DABCC5919690B6F0066C0ED /* AppDelegate.m in Sources */,
 				7DB04227196E5C7D00910446 /* BEMAnalogClockView.m in Sources */,
+				7DB1B73B196E97BB00679C88 /* LoginViewController.m in Sources */,
 				7DB0422B196E5C7D00910446 /* BEMSecondHand.m in Sources */,
 				7DABCC5519690B6F0066C0ED /* main.m in Sources */,
+				7DB1B73E196E9C9B00679C88 /* PIQRCodeReaderViewController.m in Sources */,
 				7DB04229196E5C7D00910446 /* BEMHourHand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
