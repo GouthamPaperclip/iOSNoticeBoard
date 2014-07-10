@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBarSDK.h"
 
-@interface PIQRCodeReaderViewController : UIViewController
+@interface PIQRCodeReaderViewController : UIViewController<ZBarReaderDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
 

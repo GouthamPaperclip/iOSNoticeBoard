@@ -32,12 +32,60 @@
 -(IBAction)predentAction:(id)sender
 {
     NSLog(@"Predent action");
+    
+    ZBarReaderViewController *codeReader = [ZBarReaderViewController new];
+    codeReader.readerDelegate=self;
+    codeReader.supportedOrientationsMask = ZBarOrientationMaskAll;
+    
+    if([ZBarReaderController isSourceTypeAvailable:
+        UIImagePickerControllerSourceTypeCamera])
+        codeReader.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [codeReader.scanner setSymbology: ZBAR_I25
+                          config: ZBAR_CFG_ENABLE
+                              to: 0];
+    
+    ZBarImageScanner *scanner = codeReader.scanner;
+    [scanner setSymbology: ZBAR_I25 config: ZBAR_CFG_ENABLE to: 0];
+    
+    [self presentViewController:codeReader animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - ZBar Delegate Method
+
+#pragma mark - ZBar's Delegate method
+
+- (void) imagePickerController: (UIImagePickerController*) reader didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    //  get the decode results
+    id<NSFastEnumeration> results = [info objectForKey: ZBarReaderControllerResults];
+    
+    ZBarSymbol *symbol = nil;
+    for(symbol in results)
+        // just grab the first barcode
+        break;
+    
+    // showing the result on textview
+    //resultTextView.text = symbol.data;
+    
+    
+    NSLog(@"string scanned : %@",symbol.data);
+    
+    
+    UIImage *image =
+    [info objectForKey: UIImagePickerControllerOriginalImage];
+    
+    
+    
+    //resultImageView.image = [info objectForKey: UIImagePickerControllerOriginalImage];
+    
+    // dismiss the controller
+    [reader dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

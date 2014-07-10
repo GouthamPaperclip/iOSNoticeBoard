@@ -133,7 +133,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2lI-XQ-yaa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SampleQRCodeImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="2lI-XQ-yaa">
                                 <rect key="frame" x="262" y="134" width="500" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -144,7 +144,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="64V-HI-o45" kind="push" id="Q2D-61-1TZ"/>
+                                    <action selector="predentAction:" destination="Kft-N8-3R9" eventType="touchUpInside" id="ScM-XM-hqZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -250,6 +250,7 @@
     </scenes>
     <resources>
         <image name="Line1.png" width="1027" height="4"/>
+        <image name="SampleQRCodeImage.png" width="540" height="540"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

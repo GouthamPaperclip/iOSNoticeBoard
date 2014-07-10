@@ -24,6 +24,10 @@
     IBOutlet UILabel *lblOut;
     IBOutlet UILabel *lblMeeting;
     IBOutlet UILabel *lblTasks;
+    
+    
+    UIView *viewBackGroundForIndicator;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 //Check In/Out method

@@ -18,7 +18,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
     
     //Calculating the center point for two clock views
@@ -31,7 +34,7 @@
     [self.view addSubview:viewForClocks];
     
     //Adding Melbourne clock on viewForClock
-    UIImage *imgClock = [UIImage imageNamed:@"Clock_Background_Black.png"];
+    CGRect imgClock = CGRectMake(0, 0, 400, 400);
     clockViewBEMMelbourne = [[BEMAnalogClockView alloc] init];
     clockViewBEMMelbourne.frame = CGRectMake(0, 0, imgClock.size.width, imgClock.size.height);
     clockViewBEMMelbourne.delegate = self;
@@ -122,6 +125,55 @@
     lblBangaloreTime.textColor = [UIColor whiteColor];
     lblBangaloreTime.backgroundColor = [UIColor clearColor];
     [viewForClocks addSubview:lblBangaloreTime];
+    
+    viewBackGroundForIndicator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    viewBackGroundForIndicator.backgroundColor = [UIColor colorWithRed:17/255.0 green:17/255.0 blue:17/255.0 alpha:0.9];
+    [self.view addSubview:viewBackGroundForIndicator];
+    
+    activityIndicator = [[UIActivityIndicatorView alloc] init];
+    activityIndicator.color = [UIColor whiteColor];
+    activityIndicator.frame = CGRectMake(512-200, (768/2)-200, 400, 400);
+    [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [viewBackGroundForIndicator addSubview:activityIndicator];
+    [activityIndicator startAnimating];
+    
+    [self sendTheRequest];
+}
+
+#pragma mark - Send the request
+
+-(void)sendTheRequest
+{
+    // Send a synchronous request
+    NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://j2ktracker.com.au/mobiroster/index.php?mode=init"]];
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+                                          returningResponse:&response
+                                                      error:&error];
+    
+//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+//    
+//    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+//    {
+//        
+//    }];
+    
+    NSMutableDictionary *dictRecived = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    NSLog(@"dict Recived: %@",dictRecived);
+    
+    
+    if([[dictRecived valueForKey:@"status"] isEqualToString:@"success"])
+    {
+        [viewBackGroundForIndicator removeFromSuperview];
+        [activityIndicator stopAnimating];
+    }
+    else
+    {
+        
+    }
+    
 }
 
 #pragma mark - Check In/Out Action Method
