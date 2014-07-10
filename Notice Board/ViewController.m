@@ -132,6 +132,8 @@
     
 }
 
+//Hello!
+
 - (UIColor *)analogClock:(BEMAnalogClockView *)clock graduationColorForIndex:(NSInteger)index
 {
     if (!(index % 15) == 1)
