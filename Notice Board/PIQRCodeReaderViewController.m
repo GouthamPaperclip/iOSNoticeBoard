@@ -31,7 +31,7 @@
 
 -(IBAction)predentAction:(id)sender
 {
-    NSLog(@"Predent action");
+    NSLog(@"Pretend action");
     
     ZBarReaderViewController *codeReader = [ZBarReaderViewController new];
     codeReader.readerDelegate=self;

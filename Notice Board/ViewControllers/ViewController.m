@@ -14,14 +14,52 @@
 
 @implementation ViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-	
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
     
+    internetReachableFoo = [Reachability reachabilityForInternetConnection];
+    [internetReachableFoo startNotifier];
     
+    NetworkStatus remoteHostStatus = [internetReachableFoo currentReachabilityStatus];
+    
+    if(remoteHostStatus == NotReachable)
+    {
+        NSLog(@"no");
+        
+        [lblInTitle setHidden:YES];
+        [lblOutTitle setHidden:YES];
+        [lblMeetingTitle setHidden:YES];
+        [lblTasksTitle setHidden:YES];
+        
+        [lblIn setHidden:YES];
+        [lblOut setHidden:YES];
+        [lblMeeting setHidden:YES];
+        [lblTasks setHidden:YES];
+        
+        [lblInternetNotAvailable setHidden:NO];
+        lblInternetNotAvailable.text = @"Internet Connection Not Available";
+    }
+    else if (remoteHostStatus == ReachableViaWiFi)
+    {
+        NSLog(@"wifi");
+        
+        [self sendTheRequest];
+    }
+    else if (remoteHostStatus == ReachableViaWWAN)
+    {
+        NSLog(@"cell");
+        
+        [self sendTheRequest];
+    }
+
+    [self desginTheScreen];
+}
+
+-(void)desginTheScreen
+{
     // Do any additional setup after loading the view, typically from a nib.
     
     //Calculating the center point for two clock views
@@ -45,6 +83,7 @@
     clockViewBEMMelbourne.minuteHandLength = clockViewBEMMelbourne.minuteHandLength+100;
     clockViewBEMMelbourne.hourHandLength = clockViewBEMMelbourne.hourHandLength+60;
     clockViewBEMMelbourne.secondHandLength = clockViewBEMMelbourne.secondHandLength+100;
+    clockViewBEMMelbourne.secondHandColor = [UIColor colorWithRed:121/255.0 green:236/255.0 blue:253/255.0 alpha:1.0];//121 236 253
     [clockViewBEMMelbourne startRealTime];
     [viewForClocks addSubview:clockViewBEMMelbourne];
     
@@ -104,6 +143,7 @@
     clockViewBEMIndia.minuteHandLength = clockViewBEMIndia.minuteHandLength+100;
     clockViewBEMIndia.hourHandLength = clockViewBEMIndia.hourHandLength+60;
     clockViewBEMIndia.secondHandLength = clockViewBEMIndia.secondHandLength+100;
+    clockViewBEMIndia.secondHandColor = [UIColor colorWithRed:121/255.0 green:236/255.0 blue:253/255.0 alpha:1.0];//121 236 253
     [clockViewBEMIndia startRealTime];
     [viewForClocks addSubview:clockViewBEMIndia];
     
@@ -128,16 +168,14 @@
     
     viewBackGroundForIndicator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 768)];
     viewBackGroundForIndicator.backgroundColor = [UIColor colorWithRed:17/255.0 green:17/255.0 blue:17/255.0 alpha:0.9];
-    [self.view addSubview:viewBackGroundForIndicator];
+    //[self.view addSubview:viewBackGroundForIndicator];
     
     activityIndicator = [[UIActivityIndicatorView alloc] init];
     activityIndicator.color = [UIColor whiteColor];
     activityIndicator.frame = CGRectMake(512-200, (768/2)-200, 400, 400);
     [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [viewBackGroundForIndicator addSubview:activityIndicator];
-    [activityIndicator startAnimating];
-    
-    [self sendTheRequest];
+    //    [viewBackGroundForIndicator addSubview:activityIndicator];
+    //    [activityIndicator startAnimating];
 }
 
 #pragma mark - Send the request
@@ -146,34 +184,73 @@
 {
     // Send a synchronous request
     NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://j2ktracker.com.au/mobiroster/index.php?mode=init"]];
-    NSURLResponse * response = nil;
-    NSError * error = nil;
-    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
-                                          returningResponse:&response
-                                                      error:&error];
+//    NSURLResponse * response = nil;
+//    NSError * error = nil;
+//    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+//                                          returningResponse:&response
+//                                                      error:&error];
     
-//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-//    
-//    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-//    {
-//        
-//    }];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
-    NSMutableDictionary *dictRecived = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    
-    NSLog(@"dict Recived: %@",dictRecived);
-    
-    
-    if([[dictRecived valueForKey:@"status"] isEqualToString:@"success"])
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
     {
-        [viewBackGroundForIndicator removeFromSuperview];
-        [activityIndicator stopAnimating];
-    }
-    else
-    {
+        NSMutableDictionary *dictRecived = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
         
-    }
+        if(dictRecived.count == 0 || dictRecived == nil)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [lblInTitle setHidden:YES];
+                [lblOutTitle setHidden:YES];
+                [lblMeetingTitle setHidden:YES];
+                [lblTasksTitle setHidden:YES];
+                
+                [lblIn setHidden:YES];
+                [lblOut setHidden:YES];
+                [lblMeeting setHidden:YES];
+                [lblTasks setHidden:YES];
+                
+                [lblInternetNotAvailable setHidden:NO];
+                lblInternetNotAvailable.text = @"Service is down temporarily";
+                
+            });
+        }
+        else
+        {
+            if([[dictRecived valueForKey:@"status"] isEqualToString:@"success"])
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [viewBackGroundForIndicator removeFromSuperview];
+                    [activityIndicator stopAnimating];
+                    
+                    
+                    [lblInTitle setHidden:NO];
+                    [lblOutTitle setHidden:NO];
+                    [lblMeetingTitle setHidden:NO];
+                    [lblTasksTitle setHidden:NO];
+                    
+                    [lblIn setHidden:NO];
+                    [lblOut setHidden:NO];
+                    [lblMeeting setHidden:NO];
+                    [lblTasks setHidden:NO];
+                    
+                    [lblInternetNotAvailable setHidden:YES];
+                    
+                });
+                
+                NSLog(@"dict Recived: %@",dictRecived);
+            }
+            else
+            {
+                
+            }
+        }
+    }];
     
+    
+    
+    //[self desginTheScreen];
 }
 
 #pragma mark - Check In/Out Action Method
@@ -219,6 +296,43 @@
         int minutesInt = [minutes intValue];
         int secondsInt = [seconds intValue];
         lblBangaloreTime.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hoursInt, minutesInt, secondsInt];
+    }
+}
+
+#pragma mark - Check for internet connection
+
+- (void)handleNetworkChange:(NSNotification *)notice
+{
+    NetworkStatus remoteHostStatus = [internetReachableFoo currentReachabilityStatus];
+    
+    if(remoteHostStatus == NotReachable)
+    {
+        NSLog(@"no");
+        
+        [lblInTitle setHidden:YES];
+        [lblOutTitle setHidden:YES];
+        [lblMeetingTitle setHidden:YES];
+        [lblTasksTitle setHidden:YES];
+        
+        [lblIn setHidden:YES];
+        [lblOut setHidden:YES];
+        [lblMeeting setHidden:YES];
+        [lblTasks setHidden:YES];
+        
+        [lblInternetNotAvailable setHidden:NO];
+        lblInternetNotAvailable.text = @"Internet Connection Not Available";
+    }
+    else if (remoteHostStatus == ReachableViaWiFi)
+    {
+        NSLog(@"wifi");
+        
+        [self sendTheRequest];
+    }
+    else if (remoteHostStatus == ReachableViaWWAN)
+    {
+        NSLog(@"cell");
+        
+        [self sendTheRequest];
     }
 }
 

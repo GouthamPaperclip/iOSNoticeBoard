@@ -10,24 +10,39 @@
 
 #import "BEMAnalogClockView.h"
 
+#import "Reachability.h"
+
 @interface ViewController : UIViewController<BEMAnalogClockDelegate, BEMAnimationDelegate>
 {
-    
+    //Clock views
     BEMAnalogClockView *clockViewBEMMelbourne;
     BEMAnalogClockView *clockViewBEMIndia;
     
+    //Digital time lables under clocks
     UILabel *lblMelborneTime;
     UILabel *lblBangaloreTime;
     
     
+    //Top bar labels
+    IBOutlet UILabel *lblInTitle;
+    IBOutlet UILabel *lblOutTitle;
+    IBOutlet UILabel *lblMeetingTitle;
+    IBOutlet UILabel *lblTasksTitle;
+
     IBOutlet UILabel *lblIn;
     IBOutlet UILabel *lblOut;
     IBOutlet UILabel *lblMeeting;
     IBOutlet UILabel *lblTasks;
     
+    //Hidden interconnection lable
+    IBOutlet UILabel *lblInternetNotAvailable;
     
+    //View transparent for indicator and activity indicator
     UIView *viewBackGroundForIndicator;
     UIActivityIndicatorView *activityIndicator;
+    
+    //Internet reachability
+    Reachability *internetReachableFoo;
 }
 
 //Check In/Out method

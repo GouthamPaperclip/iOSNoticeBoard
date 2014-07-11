@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D462C1D196FB0C8009BBD2F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D462C1C196FB0C8009BBD2F /* Reachability.m */; };
 		7DABCC4919690B6F0066C0ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DABCC4819690B6F0066C0ED /* Foundation.framework */; };
 		7DABCC4B19690B6F0066C0ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DABCC4A19690B6F0066C0ED /* CoreGraphics.framework */; };
 		7DABCC4D19690B6F0066C0ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DABCC4C19690B6F0066C0ED /* UIKit.framework */; };
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D462C1B196FB0C8009BBD2F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "Others Classes/Reachability.h"; sourceTree = "<group>"; };
+		7D462C1C196FB0C8009BBD2F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "Others Classes/Reachability.m"; sourceTree = "<group>"; };
 		7DABCC4519690B6F0066C0ED /* Notice Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notice Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DABCC4819690B6F0066C0ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7DABCC4A19690B6F0066C0ED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -158,6 +161,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D462C19196FB04A009BBD2F /* Other Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7D462C1B196FB0C8009BBD2F /* Reachability.h */,
+				7D462C1C196FB0C8009BBD2F /* Reachability.m */,
+			);
+			name = "Other Classes";
+			sourceTree = "<group>";
+		};
 		7DABCC3C19690B6F0066C0ED = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +211,7 @@
 		7DABCC4E19690B6F0066C0ED /* Notice Board */ = {
 			isa = PBXGroup;
 			children = (
+				7D462C19196FB04A009BBD2F /* Other Classes */,
 				7DABCC5719690B6F0066C0ED /* AppDelegate.h */,
 				7DABCC5819690B6F0066C0ED /* AppDelegate.m */,
 				7DABCC5A19690B6F0066C0ED /* Main_iPhone.storyboard */,
@@ -451,6 +464,7 @@
 				7DB04228196E5C7D00910446 /* BEMHandsAnimation.m in Sources */,
 				7DB0422A196E5C7D00910446 /* BEMMinuteHand.m in Sources */,
 				7DB1B738196E91B200679C88 /* ViewController.m in Sources */,
+				7D462C1D196FB0C8009BBD2F /* Reachability.m in Sources */,
 				7DABCC5919690B6F0066C0ED /* AppDelegate.m in Sources */,
 				7DB04227196E5C7D00910446 /* BEMAnalogClockView.m in Sources */,
 				7DB1B73B196E97BB00679C88 /* LoginViewController.m in Sources */,
