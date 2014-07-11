@@ -33,21 +33,21 @@
 {
     NSLog(@"Pretend action");
     
-    ZBarReaderViewController *codeReader = [ZBarReaderViewController new];
-    codeReader.readerDelegate=self;
-    codeReader.supportedOrientationsMask = ZBarOrientationMaskAll;
-    
-    if([ZBarReaderController isSourceTypeAvailable:
-        UIImagePickerControllerSourceTypeCamera])
-        codeReader.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [codeReader.scanner setSymbology: ZBAR_I25
-                          config: ZBAR_CFG_ENABLE
-                              to: 0];
-    
-    ZBarImageScanner *scanner = codeReader.scanner;
-    [scanner setSymbology: ZBAR_I25 config: ZBAR_CFG_ENABLE to: 0];
-    
-    [self presentViewController:codeReader animated:YES completion:nil];
+//    ZBarReaderViewController *codeReader = [ZBarReaderViewController new];
+//    codeReader.readerDelegate=self;
+//    codeReader.supportedOrientationsMask = ZBarOrientationMaskAll;
+//    
+//    if([ZBarReaderController isSourceTypeAvailable:
+//        UIImagePickerControllerSourceTypeCamera])
+//        codeReader.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    [codeReader.scanner setSymbology: ZBAR_I25
+//                          config: ZBAR_CFG_ENABLE
+//                              to: 0];
+//    
+//    ZBarImageScanner *scanner = codeReader.scanner;
+//    [scanner setSymbology: ZBAR_I25 config: ZBAR_CFG_ENABLE to: 0];
+//    
+//    [self presentViewController:codeReader animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
