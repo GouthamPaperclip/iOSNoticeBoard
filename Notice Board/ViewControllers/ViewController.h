@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BEMAnalogClockView.h"
-
+#import "PITaskViewController.h"
 #import "Reachability.h"
 
 @interface ViewController : UIViewController<BEMAnalogClockDelegate, BEMAnimationDelegate>
@@ -43,9 +43,11 @@
     
     //Internet reachability
     Reachability *internetReachableFoo;
+    
+    //Check In/Out Button
+    IBOutlet UIButton *btnCheckInOut;
 }
 
 //Check In/Out method
 -(IBAction)checkInOutAction:(id)sender;
-
 @end

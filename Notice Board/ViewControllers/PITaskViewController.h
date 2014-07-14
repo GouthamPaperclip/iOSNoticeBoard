@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ViewController.h"
+
 @interface PITaskViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UIView *viewUsers;
@@ -18,5 +20,9 @@
     
     //Array that contains
     NSMutableArray *arrayItem;
+    
+    NSMutableArray *aryUsersLogedIn;
+    
+    NSTimer *timerObj;
 }
 @end

@@ -14,48 +14,58 @@
 
 @implementation ViewController
 
+#pragma mark - Controller Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
-    
-    internetReachableFoo = [Reachability reachabilityForInternetConnection];
-    [internetReachableFoo startNotifier];
-    
-    NetworkStatus remoteHostStatus = [internetReachableFoo currentReachabilityStatus];
-    
-    if(remoteHostStatus == NotReachable)
-    {
-        NSLog(@"no");
-        
-        [lblInTitle setHidden:YES];
-        [lblOutTitle setHidden:YES];
-        [lblMeetingTitle setHidden:YES];
-        [lblTasksTitle setHidden:YES];
-        
-        [lblIn setHidden:YES];
-        [lblOut setHidden:YES];
-        [lblMeeting setHidden:YES];
-        [lblTasks setHidden:YES];
-        
-        [lblInternetNotAvailable setHidden:NO];
-        lblInternetNotAvailable.text = @"Internet Connection Not Available";
-    }
-    else if (remoteHostStatus == ReachableViaWiFi)
-    {
-        NSLog(@"wifi");
-        
-        [self sendTheRequest];
-    }
-    else if (remoteHostStatus == ReachableViaWWAN)
-    {
-        NSLog(@"cell");
-        
-        [self sendTheRequest];
-    }
 
     [self desginTheScreen];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
+//    
+//    internetReachableFoo = [Reachability reachabilityForInternetConnection];
+//    [internetReachableFoo startNotifier];
+//    
+//    NetworkStatus remoteHostStatus = [internetReachableFoo currentReachabilityStatus];
+//    
+//    if(remoteHostStatus == NotReachable)
+//    {
+//        NSLog(@"no");
+//        
+//        [lblInTitle setHidden:YES];
+//        [lblOutTitle setHidden:YES];
+//        [lblMeetingTitle setHidden:YES];
+//        [lblTasksTitle setHidden:YES];
+//        
+//        [lblIn setHidden:YES];
+//        [lblOut setHidden:YES];
+//        [lblMeeting setHidden:YES];
+//        [lblTasks setHidden:YES];
+//        
+//        [lblInternetNotAvailable setHidden:NO];
+//        lblInternetNotAvailable.text = @"Internet Connection Not Available";
+//    }
+//    else if (remoteHostStatus == ReachableViaWiFi)
+//    {
+//        NSLog(@"wifi");
+//        
+//        [self sendTheRequest];
+//    }
+//    else if (remoteHostStatus == ReachableViaWWAN)
+//    {
+//        NSLog(@"cell");
+//        
+//        [self sendTheRequest];
+//    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    //[internetReachableFoo stopNotifier];
 }
 
 -(void)desginTheScreen
@@ -248,8 +258,6 @@
         }
     }];
     
-    
-    
     //[self desginTheScreen];
 }
 
@@ -336,6 +344,10 @@
     }
 }
 
+-(void)dealloc
+{
+    [NSNotificationCenter dealloc];
+}
 
 
 - (void)didReceiveMemoryWarning

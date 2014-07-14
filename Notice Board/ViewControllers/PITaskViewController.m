@@ -21,8 +21,6 @@
         // Custom initialization
         arrayItem = [[NSMutableArray alloc] init];
         
-        
-        
     }
     return self;
 }
@@ -39,6 +37,60 @@
     tableViewUsers.delegate = self;
     
     arrayItem = [NSMutableArray arrayWithObjects:@"Task 1",@"Task 2", nil];
+    
+    //User loged in details, making static data
+    
+    aryUsersLogedIn = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary *dictUserDetails = [[NSMutableDictionary alloc] init];
+    
+    [dictUserDetails setObject:@"Goutham Devaraju" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Mrudula Amirneni" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Sam Paul Solomon" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Sreenath Bagineni" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Chris Lim" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Nathan" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Arjun" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Gokul" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Champakamala" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+ 
+    
+    timerObj = [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(timeUp:) userInfo:nil repeats:NO];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,12 +108,15 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    if(tableView.tag == 1)
+        return [arrayItem count];
+    else
+        return [aryUsersLogedIn count];
 }
 
 //- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -87,12 +142,12 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *strCell = [NSString stringWithFormat:@"strCell"];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:strCell];
-    
     if(tableView.tag == 1)
     {
+        NSString *strCell = [NSString stringWithFormat:@"strCellTaskView"];
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:strCell];
+        
         if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCell];
@@ -100,21 +155,34 @@
             
             cell.textLabel.text = arrayItem[indexPath.row];
         }
+        return cell;
     }
     else
     {
+        //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        NSString *strCell = [NSString stringWithFormat:@"strCell"];
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:strCell];
+        
         if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCell];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
-            cell.textLabel.text = arrayItem[indexPath.row];
+//            cell.textLabel.text = arrayItem[indexPath.row];
+//            cell.detailTextLabel.text = arrayItem[indexPath.row];
             
-            cell.detailTextLabel.text = arrayItem[indexPath.row];
+            NSDictionary *dictUserDetails = aryUsersLogedIn[indexPath.row];
+            
+            NSString *strName = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"Name"]];
+            NSString *strCheckInTime = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"CheckInTime"]];
+            
+            cell.textLabel.text = strName;
+            cell.detailTextLabel.text = strCheckInTime;
         }
+        return cell;
     }
-    
-    
     
 //    UIView *viewCell = [cell contentView];
 //    [[viewCell subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -130,8 +198,6 @@
 //    lblCellText.text = arrayItem[indexPath.row];
 //    lblCellText.backgroundColor = [UIColor greenColor];
 //    [viewCell addSubview:lblCellText];
-    
-    return cell;
 }
 
 /*
@@ -144,5 +210,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Time Up Method
+
+-(void)timeUp:(id)sender
+{
+    ViewController *viewControllerObj = [[ViewController alloc] initWithNibName:@"ViewController" bundle:[NSBundle mainBundle]];
+    
+    [self.navigationController presentViewController:viewControllerObj animated:YES completion:nil];
+}
 
 @end
