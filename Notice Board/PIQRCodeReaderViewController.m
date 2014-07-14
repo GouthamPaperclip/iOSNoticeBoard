@@ -29,9 +29,18 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    //Working with timeUp
+    timeFrame = 5.0;
+    timerObj = [NSTimer scheduledTimerWithTimeInterval:timeFrame target:self selector:@selector(timeUp:) userInfo:nil repeats:NO];
+}
+
 -(IBAction)predentAction:(id)sender
 {
     NSLog(@"Pretend action");
+    
+    [timerObj invalidate];
     
 //    ZBarReaderViewController *codeReader = [ZBarReaderViewController new];
 //    codeReader.readerDelegate=self;
@@ -56,8 +65,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - ZBar Delegate Method
-
 #pragma mark - ZBar's Delegate method
 
 - (void) imagePickerController: (UIImagePickerController*) reader didFinishPickingMediaWithInfo: (NSDictionary*) info
@@ -72,20 +79,29 @@
     
     // showing the result on textview
     //resultTextView.text = symbol.data;
-    
-    
     NSLog(@"string scanned : %@",symbol.data);
     
-    
-    UIImage *image =
-    [info objectForKey: UIImagePickerControllerOriginalImage];
-    
-    
+    UIImage *image = [info objectForKey: UIImagePickerControllerOriginalImage];
     
     //resultImageView.image = [info objectForKey: UIImagePickerControllerOriginalImage];
     
     // dismiss the controller
     [reader dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Touches Method
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [timerObj invalidate];
+    timerObj = [NSTimer scheduledTimerWithTimeInterval:timeFrame target:self selector:@selector(timeUp:) userInfo:nil repeats:NO];
+    NSLog(@"Timer invalidated");
+}
+
+#pragma mark - Time Up Method
+-(void)timeUp:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 /*

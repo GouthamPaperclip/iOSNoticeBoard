@@ -10,7 +10,11 @@
 #import "ZBarSDK.h"
 
 @interface PIQRCodeReaderViewController : UIViewController<ZBarReaderDelegate>
-
+{
+    //Working with timer
+    NSTimer *timerObj;
+    float timeFrame;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
 
 -(IBAction)predentAction:(id)sender;

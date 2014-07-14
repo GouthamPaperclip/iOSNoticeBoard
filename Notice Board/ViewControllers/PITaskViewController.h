@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import "PIQRCodeReaderViewController"
 
-#import "ViewController.h"
+#import "BEMAnalogClockView.h"
 
-@interface PITaskViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@class PIQRCodeReaderViewController;
+
+@interface PITaskViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, BEMAnalogClockDelegate, BEMAnimationDelegate>
 {
     IBOutlet UIView *viewUsers;
     IBOutlet UIView *viewMenuBar;
     
+    //Table view objects
     IBOutlet UITableView *tableViewTasks;
     IBOutlet UITableView *tableViewUsers;
     
@@ -23,6 +27,14 @@
     
     NSMutableArray *aryUsersLogedIn;
     
+    //Working with timer
     NSTimer *timerObj;
+    float timeFrame;
+    
+    //Clock views
+    IBOutlet BEMAnalogClockView *clockViewMelbourneTaskVC;
+    IBOutlet BEMAnalogClockView *clockViewIndiaTaskVC;
 }
+
+-(IBAction)checkInOutEvent:(id)sender;
 @end

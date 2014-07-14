@@ -237,6 +237,46 @@
                                             <outlet property="delegate" destination="ppM-Wb-v2Z" id="Spf-0v-JSB"/>
                                         </connections>
                                     </tableView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEO-8h-xOe" customClass="BEMAnalogClockView">
+                                        <rect key="frame" x="102" y="324" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UuJ-aO-2M7" customClass="BEMAnalogClockView">
+                                        <rect key="frame" x="102" y="482" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCE-B0-NAD">
+                                        <rect key="frame" x="40" y="645" width="245" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <state key="normal" title="Check In/Out">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="checkInOutEvent:" destination="8pn-df-CsH" eventType="touchUpInside" id="Zud-Fi-dlA"/>
+                                            <segue destination="Kft-N8-3R9" kind="push" id="bXH-YN-sqd"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Melbourne" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsi-Fe-Py8">
+                                        <rect key="frame" x="121" y="452" width="83" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bangalore" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4J-zz-AZA">
+                                        <rect key="frame" x="123" y="616" width="78" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TableViewEndLine.png" translatesAutoresizingMaskIntoConstraints="NO" id="CQT-S0-zaM">
+                                        <rect key="frame" x="0.0" y="300" width="324" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -299,6 +339,8 @@
                     <navigationItem key="navigationItem" id="6Xg-3l-Yef"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="clockViewIndiaTaskVC" destination="UuJ-aO-2M7" id="hhs-91-QDI"/>
+                        <outlet property="clockViewMelbourneTaskVC" destination="rEO-8h-xOe" id="H6g-x5-WPq"/>
                         <outlet property="tableViewTasks" destination="5XX-W3-dO0" id="FIN-2y-16M"/>
                         <outlet property="tableViewUsers" destination="cWV-Ls-hEz" id="fdj-up-7q7"/>
                         <outlet property="viewMenuBar" destination="OP4-gG-vSp" id="hk5-5d-vk6"/>
@@ -401,6 +443,7 @@
         <image name="LongLine_Horizontal.png" width="703" height="3"/>
         <image name="LongLine_Vertical.png" width="3" height="685"/>
         <image name="SampleQRCodeImage.png" width="540" height="540"/>
+        <image name="TableViewEndLine.png" width="326" height="2"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -408,6 +451,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="bXH-YN-sqd"/>
         <segue reference="X0Q-KQ-bjF"/>
     </inferredMetricsTieBreakers>
 </document>
