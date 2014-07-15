@@ -25,13 +25,30 @@
     return self;
 }
 
+#pragma mark - ViewController Life Cycle
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    clockViewIndiaTaskVC.delegate = self;
+    clockViewMelbourneTaskVC.delegate = self;
+    
+    //Working with timeUp
+    timeFrame = 90.0;
+    timerObj = [NSTimer scheduledTimerWithTimeInterval:timeFrame target:self selector:@selector(timeUp:) userInfo:nil repeats:NO];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    clockViewIndiaTaskVC.delegate = nil;
+    clockViewMelbourneTaskVC.delegate = nil;
+    
+    [timerObj invalidate];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
-    
     tableViewTasks.dataSource = self;
     tableViewTasks.delegate = self;
     
@@ -49,7 +66,7 @@
     [dictUserDetails setObject:@"Goutham Devaraju" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
     [aryUsersLogedIn addObject:dictUserDetails];
-    
+
     dictUserDetails = [[NSMutableDictionary alloc] init];
     [dictUserDetails setObject:@"Mrudula Amirneni" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
@@ -91,10 +108,6 @@
     [aryUsersLogedIn addObject:dictUserDetails];
  
     
-    //Working with timeUp
-    timeFrame = 30.0;
-    timerObj = [NSTimer scheduledTimerWithTimeInterval:timeFrame target:self selector:@selector(timeUp:) userInfo:nil repeats:NO];
-    
     
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
@@ -109,10 +122,10 @@
 -(void)desginTheClockView
 {
     
-    //    clockViewIndia = [[BEMAnalogClockView alloc] init];
-    //    clockViewIndia.frame = CGRectMake(85, 485, 155, 155);
+    //clockViewIndia = [[BEMAnalogClockView alloc] init];
+    //clockViewIndia.frame = CGRectMake(85, 485, 155, 155);
     clockViewIndiaTaskVC.delegate = self;
-    clockViewIndiaTaskVC.currentTime = NO;
+    clockViewIndiaTaskVC.currentTime = YES;
     clockViewIndiaTaskVC.faceBackgroundColor = [UIColor whiteColor];
     clockViewIndiaTaskVC.tag = 2;
     clockViewIndiaTaskVC.realTime = YES;
@@ -133,7 +146,7 @@
     clockViewIndiaTaskVC.borderWidth = clockViewMelbourneTaskVC.borderWidth/2;
     clockViewIndiaTaskVC.enableShadows = NO;
     [clockViewIndiaTaskVC startRealTime];
-    //    [self.view addSubview:clockViewIndia];
+    //[self.view addSubview:clockViewIndia];
     
     
     
@@ -233,6 +246,47 @@
     return 50;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if(tableView.tag == 1)
+        return 50;
+    else
+        return 50;
+}
+
+-(UIView*)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if(tableView.tag == 1)
+    {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
+        
+        /* Create custom view to display section header... */
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, tableView.frame.size.width, 50)];
+        [label setFont:[UIFont fontWithName:@"Futura-Medium" size:22.0]];
+        
+        NSString *string = @"Task Lists";
+        /* Section header is in 0th index... */
+        [label setText:string];
+        [view addSubview:label];
+        [view setBackgroundColor:[UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]]; //your background color...
+        
+        return view;
+    }
+    else
+    {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
+        
+        /* Create custom view to display section header... */
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, tableView.frame.size.width, 50)];
+        [label setFont:[UIFont fontWithName:@"Futura-Medium" size:22.0]];
+        NSString *string = @"In Right Now";
+        [label setText:string];
+        [view addSubview:label];
+        [view setBackgroundColor:[UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]];
+        return view;
+    }
+}
+
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(tableView.tag == 1)
@@ -246,15 +300,14 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCell];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
-            cell.textLabel.text = arrayItem[indexPath.row];
+            
         }
+        cell.textLabel.text = arrayItem[indexPath.row];
         return cell;
     }
     else
     {
-        //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        
-        NSString *strCell = [NSString stringWithFormat:@"strCell"];
+        NSString *strCell = [NSString stringWithFormat:@"strCellUsers"];
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:strCell];
         
@@ -262,17 +315,16 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCell];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            
-//            cell.textLabel.text = arrayItem[indexPath.row];
-//            cell.detailTextLabel.text = arrayItem[indexPath.row];
-            NSDictionary *dictUserDetails = aryUsersLogedIn[indexPath.row];
-            
-            NSString *strName = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"Name"]];
-            NSString *strCheckInTime = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"CheckInTime"]];
-            
-            cell.textLabel.text = strName;
-            cell.detailTextLabel.text = strCheckInTime;
         }
+        
+        NSDictionary *dictUserDetails = aryUsersLogedIn[indexPath.row];
+        
+        NSString *strName = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"Name"]];
+        NSString *strCheckInTime = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"CheckInTime"]];
+        
+        cell.textLabel.text = strName;
+        cell.detailTextLabel.text = strCheckInTime;
+        
         return cell;
     }
     
@@ -323,10 +375,6 @@
 
 -(void)timeUp:(id)sender
 {
-//    ViewController *viewControllerObj = [[ViewController alloc] initWithNibName:@"ViewController" bundle:[NSBundle mainBundle]];
-//    
-//    [self.navigationController presentViewController:viewControllerObj animated:YES completion:nil];
-    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -351,7 +399,21 @@
 
 - (void)currentTimeOnClock:(BEMAnalogClockView *)clock Hours:(NSString *)hours Minutes:(NSString *)minutes Seconds:(NSString *)seconds
 {
+    if (clock.tag == 1)
+    {
+        int hoursInt = [hours intValue];
+        int minutesInt = [minutes intValue];
+        int secondsInt = [seconds intValue];
+        lblMelborneTime.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hoursInt, minutesInt, secondsInt];
+    }
     
+    if (clock.tag == 2)
+    {
+        int hoursInt = [hours intValue];
+        int minutesInt = [minutes intValue];
+        int secondsInt = [seconds intValue];
+        lblBangaloreTime.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hoursInt, minutesInt, secondsInt];
+    }
 }
 
 #pragma mark - Check In Out Event

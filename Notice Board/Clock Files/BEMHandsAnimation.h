@@ -23,6 +23,9 @@
 
 /// Class for the animation of the clock's hands.
 @interface BEMHandsAnimation : NSObject
+{
+    int doAnimate;
+}
 
 @property (assign) id <BEMAnimationDelegate> delegate;
 

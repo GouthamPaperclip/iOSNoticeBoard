@@ -34,7 +34,12 @@
     //Clock views
     IBOutlet BEMAnalogClockView *clockViewMelbourneTaskVC;
     IBOutlet BEMAnalogClockView *clockViewIndiaTaskVC;
+    
+    //Digital time lables under clocks
+    IBOutlet UILabel *lblMelborneTime;
+    IBOutlet UILabel *lblBangaloreTime;
 }
 
 -(IBAction)checkInOutEvent:(id)sender;
+
 @end

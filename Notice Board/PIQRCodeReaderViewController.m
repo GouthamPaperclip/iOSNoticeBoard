@@ -32,7 +32,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     //Working with timeUp
-    timeFrame = 5.0;
+    timeFrame = 90.0;
     timerObj = [NSTimer scheduledTimerWithTimeInterval:timeFrame target:self selector:@selector(timeUp:) userInfo:nil repeats:NO];
 }
 

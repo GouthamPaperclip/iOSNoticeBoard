@@ -21,13 +21,15 @@
     [super viewDidLoad];
 
     [self desginTheScreen];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
+    
+    internetReachableFoo = [Reachability reachabilityForInternetConnection];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
-    
-    internetReachableFoo = [Reachability reachabilityForInternetConnection];
     [internetReachableFoo startNotifier];
     
     NetworkStatus remoteHostStatus = [internetReachableFoo currentReachabilityStatus];
@@ -65,7 +67,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    //[internetReachableFoo stopNotifier];
+    [internetReachableFoo stopNotifier];
 }
 
 -(void)desginTheScreen
@@ -95,6 +97,9 @@
     clockViewBEMMelbourne.secondHandLength = clockViewBEMMelbourne.secondHandLength+100;
     clockViewBEMMelbourne.secondHandColor = [UIColor colorWithRed:121/255.0 green:236/255.0 blue:253/255.0 alpha:1.0];//121 236 253
     [clockViewBEMMelbourne startRealTime];
+    clockViewBEMMelbourne.minuteHandOffsideLength = 0;
+    clockViewBEMMelbourne.hourHandOffsideLength = 0;
+    clockViewBEMMelbourne.secondHandOffsideLength = 0;
     [viewForClocks addSubview:clockViewBEMMelbourne];
     
     //Updating to melbourne time
@@ -154,8 +159,12 @@
     clockViewBEMIndia.hourHandLength = clockViewBEMIndia.hourHandLength+60;
     clockViewBEMIndia.secondHandLength = clockViewBEMIndia.secondHandLength+100;
     clockViewBEMIndia.secondHandColor = [UIColor colorWithRed:121/255.0 green:236/255.0 blue:253/255.0 alpha:1.0];//121 236 253
+    clockViewBEMIndia.minuteHandOffsideLength = 0;
+    clockViewBEMIndia.hourHandOffsideLength = 0;
+    clockViewBEMIndia.secondHandOffsideLength = 0;
     [clockViewBEMIndia startRealTime];
     [viewForClocks addSubview:clockViewBEMIndia];
+    
     
     //Adding Bangalore Digital Time and title under clock
     str = [NSString stringWithFormat:@"Bangalore"];
@@ -184,16 +193,16 @@
     activityIndicator.color = [UIColor whiteColor];
     activityIndicator.frame = CGRectMake(512-200, (768/2)-200, 400, 400);
     [activityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    //    [viewBackGroundForIndicator addSubview:activityIndicator];
-    //    [activityIndicator startAnimating];
+    //[viewBackGroundForIndicator addSubview:activityIndicator];
+    //[activityIndicator startAnimating];
 }
 
 #pragma mark - Send the request
-
 -(void)sendTheRequest
 {
     // Send a synchronous request
     NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://j2ktracker.com.au/mobiroster/index.php?mode=init"]];
+    
 //    NSURLResponse * response = nil;
 //    NSError * error = nil;
 //    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
@@ -222,7 +231,6 @@
                 
                 [lblInternetNotAvailable setHidden:NO];
                 lblInternetNotAvailable.text = @"Service is down temporarily";
-                
             });
         }
         else
@@ -233,7 +241,6 @@
                     
                     [viewBackGroundForIndicator removeFromSuperview];
                     [activityIndicator stopAnimating];
-                    
                     
                     [lblInTitle setHidden:NO];
                     [lblOutTitle setHidden:NO];
@@ -246,7 +253,6 @@
                     [lblTasks setHidden:NO];
                     
                     [lblInternetNotAvailable setHidden:YES];
-                    
                 });
                 
                 NSLog(@"dict Recived: %@",dictRecived);
@@ -278,7 +284,6 @@
     else
         return 0;
 }
-
 
 - (UIColor *)analogClock:(BEMAnalogClockView *)clock graduationColorForIndex:(NSInteger)index
 {
