@@ -129,7 +129,7 @@
     clockViewIndiaTaskVC.faceBackgroundColor = [UIColor whiteColor];
     clockViewIndiaTaskVC.tag = 2;
     clockViewIndiaTaskVC.realTime = YES;
-    clockViewIndiaTaskVC.minuteHandLength = clockViewIndiaTaskVC.minuteHandLength-10;
+    clockViewIndiaTaskVC.minuteHandLength = clockViewIndiaTaskVC.minuteHandLength-20;
     clockViewIndiaTaskVC.hourHandLength = clockViewIndiaTaskVC.hourHandLength-5;
     clockViewIndiaTaskVC.secondHandLength = clockViewIndiaTaskVC.secondHandLength-10;
     clockViewIndiaTaskVC.secondHandColor = [UIColor clearColor];//121 236 253
@@ -138,12 +138,12 @@
     clockViewIndiaTaskVC.borderColor = [UIColor blackColor];
     clockViewIndiaTaskVC.minuteHandOffsideLength = 0;
     clockViewIndiaTaskVC.hourHandOffsideLength = 0;
-    clockViewIndiaTaskVC.hourHandWidth = 2.0;
-    clockViewIndiaTaskVC.minuteHandWidth = 2.0;
-    clockViewIndiaTaskVC.secondHandWidth = 2.0;
+    clockViewIndiaTaskVC.hourHandWidth = 1.0;
+    clockViewIndiaTaskVC.minuteHandWidth = 1.0;
+    clockViewIndiaTaskVC.secondHandWidth = 1.0;
     clockViewIndiaTaskVC.minuteHandColor = [UIColor blackColor];
     clockViewIndiaTaskVC.borderColor = [UIColor blackColor];
-    clockViewIndiaTaskVC.borderWidth = clockViewMelbourneTaskVC.borderWidth/2;
+    clockViewIndiaTaskVC.borderWidth = clockViewMelbourneTaskVC.borderWidth/3;
     clockViewIndiaTaskVC.enableShadows = NO;
     [clockViewIndiaTaskVC startRealTime];
     //[self.view addSubview:clockViewIndia];
@@ -157,17 +157,17 @@
     clockViewMelbourneTaskVC.faceBackgroundColor = [UIColor whiteColor];
     clockViewMelbourneTaskVC.tag = 1;
     clockViewMelbourneTaskVC.realTime = YES;
-    clockViewMelbourneTaskVC.minuteHandLength = clockViewMelbourneTaskVC.minuteHandLength-10;
+    clockViewMelbourneTaskVC.minuteHandLength = clockViewMelbourneTaskVC.minuteHandLength-20;
     clockViewMelbourneTaskVC.hourHandLength = clockViewMelbourneTaskVC.hourHandLength-5;
     clockViewMelbourneTaskVC.secondHandLength = clockViewMelbourneTaskVC.secondHandLength-10;
     clockViewMelbourneTaskVC.secondHandColor = [UIColor clearColor];//121 236 253
     clockViewMelbourneTaskVC.hourHandColor = [UIColor blackColor];
-    clockViewMelbourneTaskVC.hourHandWidth = 2.0;
-    clockViewMelbourneTaskVC.minuteHandWidth = 2.0;
-    clockViewMelbourneTaskVC.secondHandWidth = 2.0;
+    clockViewMelbourneTaskVC.hourHandWidth = 1.0;
+    clockViewMelbourneTaskVC.minuteHandWidth = 1.0;
+    clockViewMelbourneTaskVC.secondHandWidth = 1.0;
     clockViewMelbourneTaskVC.minuteHandColor = [UIColor blackColor];
     clockViewMelbourneTaskVC.borderColor = [UIColor blackColor];
-    clockViewMelbourneTaskVC.borderWidth = clockViewMelbourneTaskVC.borderWidth/2;
+    clockViewMelbourneTaskVC.borderWidth = clockViewMelbourneTaskVC.borderWidth/3;
     clockViewMelbourneTaskVC.minuteHandOffsideLength = 0;
     clockViewMelbourneTaskVC.hourHandOffsideLength = 0;
     clockViewMelbourneTaskVC.enableShadows = NO;
@@ -314,7 +314,7 @@
         if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCell];
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
         
         NSDictionary *dictUserDetails = aryUsersLogedIn[indexPath.row];
