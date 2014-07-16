@@ -26,6 +26,8 @@
     
     internetReachableFoo = [Reachability reachabilityForInternetConnection];
     
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -124,7 +126,7 @@
     
     //Adding Melourne Digital Time and title under clock
     NSString *str = [NSString stringWithFormat:@"Melborne"];
-    UIFont *font = [UIFont fontWithName:@"Futura-Medium" size:35.0];
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:35.0f];
     CGRect textRect;
     NSDictionary *attributes = @{NSFontAttributeName: font};
     textRect.size = [str sizeWithAttributes:attributes];
@@ -138,7 +140,7 @@
     [viewForClocks addSubview:lblMelborne];
     
     lblMelborneTime = [[UILabel alloc] initWithFrame:CGRectMake(130, clockViewBEMMelbourne.frame.size.height+clockViewBEMMelbourne.frame.origin.y+10, textRect.size.width, textRect.size.height)];
-    lblMelborneTime.font = [UIFont fontWithName:@"Futura-Medium" size:20.0];
+    lblMelborneTime.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f];
     lblMelborneTime.textAlignment = NSTextAlignmentCenter;
     lblMelborneTime.textColor = [UIColor whiteColor];
     lblMelborneTime.backgroundColor = [UIColor clearColor];
@@ -179,7 +181,7 @@
     [viewForClocks addSubview:lblBangalore];
     
     lblBangaloreTime = [[UILabel alloc] initWithFrame:CGRectMake(630, clockViewBEMIndia.frame.size.height+clockViewBEMIndia.frame.origin.y+10, textRect.size.width, textRect.size.height)];
-    lblBangaloreTime.font = [UIFont fontWithName:@"Futura-Medium" size:20.0];
+    lblBangaloreTime.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f];
     lblBangaloreTime.textAlignment = NSTextAlignmentCenter;
     lblBangaloreTime.textColor = [UIColor whiteColor];
     lblBangaloreTime.backgroundColor = [UIColor clearColor];

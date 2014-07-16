@@ -46,6 +46,8 @@
     
     //Check In/Out Button
     IBOutlet UIButton *btnCheckInOut;
+    
+    
 }
 
 //Check In/Out method

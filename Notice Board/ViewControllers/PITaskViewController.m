@@ -19,7 +19,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        arrayItem = [[NSMutableArray alloc] init];
         
     }
     return self;
@@ -43,6 +42,8 @@
     clockViewMelbourneTaskVC.delegate = nil;
     
     [timerObj invalidate];
+    
+    [popOverController dismissPopoverAnimated:NO];
 }
 
 - (void)viewDidLoad
@@ -55,66 +56,324 @@
     tableViewUsers.dataSource = self;
     tableViewUsers.delegate = self;
     
-    arrayItem = [NSMutableArray arrayWithObjects:@"Task 1",@"Task 2", nil];
+    
+    tableViewUsersOut.dataSource = self;
+    tableViewUsersOut.delegate = self;
+    
+    
+    //Considering a dictionary from server for the tasks
+    aryTaskDetailsList = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary *dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task Go Get It" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Sam" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task Go Get" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task Go" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Sam" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    dictTaskDetails = [[NSMutableDictionary alloc] init];
+    [dictTaskDetails setObject:@"Task" forKey:@"TaskName"];
+    [dictTaskDetails setObject:@"Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible Go and get it as soon as possible" forKey:@"TaskDescription"];
+    [dictTaskDetails setObject:@"Goutham" forKey:@"TaskPostedBy"];
+    [dictTaskDetails setObject:@"Mrudula" forKey:@"TaskAssginedTo"];
+    [dictTaskDetails setObject:@"Wed 16 July 12:47:39 pm" forKey:@"TaskPostedTime"];
+    [aryTaskDetailsList addObject:dictTaskDetails];
+    
+    
     
     //User loged in details, making static data
-    
     aryUsersLogedIn = [[NSMutableArray alloc] init];
     
     NSMutableDictionary *dictUserDetails = [[NSMutableDictionary alloc] init];
     
+    NSMutableArray *aryLoginHistory = [[NSMutableArray alloc] init];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 10:55AM"];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 11:55AM"];
     [dictUserDetails setObject:@"Goutham Devaraju" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [dictUserDetails setObject:aryLoginHistory forKey:@"History"];
     [aryUsersLogedIn addObject:dictUserDetails];
 
+    
+    aryLoginHistory = [[NSMutableArray alloc] init];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 10:55AM"];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 11:55AM"];
     dictUserDetails = [[NSMutableDictionary alloc] init];
     [dictUserDetails setObject:@"Mrudula Amirneni" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [dictUserDetails setObject:aryLoginHistory forKey:@"History"];
     [aryUsersLogedIn addObject:dictUserDetails];
     
+    aryLoginHistory = [[NSMutableArray alloc] init];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 10:55AM"];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 11:55AM"];
     dictUserDetails = [[NSMutableDictionary alloc] init];
     [dictUserDetails setObject:@"Sam Paul Solomon" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [dictUserDetails setObject:aryLoginHistory forKey:@"History"];
     [aryUsersLogedIn addObject:dictUserDetails];
+    
+    aryLoginHistory = [[NSMutableArray alloc] init];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 10:55AM"];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 11:55AM"];
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Sreenath Bagineni" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [dictUserDetails setObject:aryLoginHistory forKey:@"History"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    aryLoginHistory = [[NSMutableArray alloc] init];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 10:55AM"];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 11:55AM"];
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Chris Lim" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [dictUserDetails setObject:aryLoginHistory forKey:@"History"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    aryLoginHistory = [[NSMutableArray alloc] init];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 10:55AM"];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 11:55AM"];
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Nathan" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [dictUserDetails setObject:aryLoginHistory forKey:@"History"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    aryLoginHistory = [[NSMutableArray alloc] init];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 10:55AM"];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 11:55AM"];
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Arjun" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [dictUserDetails setObject:aryLoginHistory forKey:@"History"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    aryLoginHistory = [[NSMutableArray alloc] init];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 10:55AM"];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 11:55AM"];
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Gokul" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [dictUserDetails setObject:aryLoginHistory forKey:@"History"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    aryLoginHistory = [[NSMutableArray alloc] init];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 10:55AM"];
+    [aryLoginHistory addObject:@"Checked in at 9:55AM"];
+    [aryLoginHistory addObject:@"Checked out at 11:55AM"];
+    dictUserDetails = [[NSMutableDictionary alloc] init];
+    [dictUserDetails setObject:@"Champakamala" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [dictUserDetails setObject:aryLoginHistory forKey:@"History"];
+    [aryUsersLogedIn addObject:dictUserDetails];
+    
+    
+    //User loged in details, making static data
+    aryUsersLogedOut = [[NSMutableArray alloc] init];
     
     dictUserDetails = [[NSMutableDictionary alloc] init];
     [dictUserDetails setObject:@"Sreenath Bagineni" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
-    [aryUsersLogedIn addObject:dictUserDetails];
+    [aryUsersLogedOut addObject:dictUserDetails];
     
     dictUserDetails = [[NSMutableDictionary alloc] init];
     [dictUserDetails setObject:@"Chris Lim" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
-    [aryUsersLogedIn addObject:dictUserDetails];
+    [aryUsersLogedOut addObject:dictUserDetails];
     
     dictUserDetails = [[NSMutableDictionary alloc] init];
     [dictUserDetails setObject:@"Nathan" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
-    [aryUsersLogedIn addObject:dictUserDetails];
+    [aryUsersLogedOut addObject:dictUserDetails];
+    
+    [dictUserDetails setObject:@"Goutham Devaraju" forKey:@"Name"];
+    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
+    [aryUsersLogedOut addObject:dictUserDetails];
     
     dictUserDetails = [[NSMutableDictionary alloc] init];
-    [dictUserDetails setObject:@"Arjun" forKey:@"Name"];
+    [dictUserDetails setObject:@"Mrudula Amirneni" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
-    [aryUsersLogedIn addObject:dictUserDetails];
+    [aryUsersLogedOut addObject:dictUserDetails];
     
     dictUserDetails = [[NSMutableDictionary alloc] init];
-    [dictUserDetails setObject:@"Gokul" forKey:@"Name"];
+    [dictUserDetails setObject:@"Sam Paul Solomon" forKey:@"Name"];
     [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
-    [aryUsersLogedIn addObject:dictUserDetails];
-    
-    dictUserDetails = [[NSMutableDictionary alloc] init];
-    [dictUserDetails setObject:@"Champakamala" forKey:@"Name"];
-    [dictUserDetails setObject:@"Checked in at 9:55AM" forKey:@"CheckInTime"];
-    [aryUsersLogedIn addObject:dictUserDetails];
- 
+    [aryUsersLogedOut addObject:dictUserDetails];
     
     
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
-    [tableViewTasks addGestureRecognizer:tap];
+     
     
-    UITapGestureRecognizer *tapOnUsers = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
-    [tableViewUsers addGestureRecognizer:tapOnUsers];
+    
+    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
+//    [tableViewTasks addGestureRecognizer:tap];
+//    
+//    UITapGestureRecognizer *tapOnUsers = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView:)];
+//    [tableViewUsers addGestureRecognizer:tapOnUsers];
     
     [self desginTheClockView];
 }
@@ -129,8 +388,8 @@
     clockViewIndiaTaskVC.faceBackgroundColor = [UIColor whiteColor];
     clockViewIndiaTaskVC.tag = 2;
     clockViewIndiaTaskVC.realTime = YES;
-    clockViewIndiaTaskVC.minuteHandLength = clockViewIndiaTaskVC.minuteHandLength-10;
-    clockViewIndiaTaskVC.hourHandLength = clockViewIndiaTaskVC.hourHandLength-5;
+    clockViewIndiaTaskVC.minuteHandLength = clockViewIndiaTaskVC.minuteHandLength-15;
+    clockViewIndiaTaskVC.hourHandLength = clockViewIndiaTaskVC.hourHandLength-8;
     clockViewIndiaTaskVC.secondHandLength = clockViewIndiaTaskVC.secondHandLength-10;
     clockViewIndiaTaskVC.secondHandColor = [UIColor clearColor];//121 236 253
     clockViewIndiaTaskVC.hourHandColor = [UIColor blackColor];
@@ -157,8 +416,8 @@
     clockViewMelbourneTaskVC.faceBackgroundColor = [UIColor whiteColor];
     clockViewMelbourneTaskVC.tag = 1;
     clockViewMelbourneTaskVC.realTime = YES;
-    clockViewMelbourneTaskVC.minuteHandLength = clockViewMelbourneTaskVC.minuteHandLength-10;
-    clockViewMelbourneTaskVC.hourHandLength = clockViewMelbourneTaskVC.hourHandLength-5;
+    clockViewMelbourneTaskVC.minuteHandLength = clockViewMelbourneTaskVC.minuteHandLength-15;
+    clockViewMelbourneTaskVC.hourHandLength = clockViewMelbourneTaskVC.hourHandLength-8;
     clockViewMelbourneTaskVC.secondHandLength = clockViewMelbourneTaskVC.secondHandLength-10;
     clockViewMelbourneTaskVC.secondHandColor = [UIColor clearColor];//121 236 253
     clockViewMelbourneTaskVC.hourHandColor = [UIColor blackColor];
@@ -192,8 +451,6 @@
     clockViewMelbourneTaskVC.seconds = [strSeconds intValue];
     [clockViewMelbourneTaskVC updateTimeAnimated:YES];
     
-    
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -203,11 +460,70 @@
 }
 
 #pragma mark - Table View Delegate Methods
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [timerObj invalidate];
     timerObj = [NSTimer scheduledTimerWithTimeInterval:timeFrame target:self selector:@selector(timeUp:) userInfo:nil repeats:NO];
+    
+    if(tableView.tag == 1)
+    {
+        NSDictionary *dictTaskDetails = aryTaskDetailsList[indexPath.row];
+        
+        CGRect contentRect = CGRectMake(0, 0, 670, 300);
+        
+        UIViewController *popoverContent = [[UIViewController alloc] init];
+        popoverContent.preferredContentSize = contentRect.size;
+        
+        popOverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
+        popOverController.delegate = self;
+        
+        UIView *popoverContentView = [self popOverDesignWithDictionary:dictTaskDetails WithRect:contentRect];
+        [popoverContent.view addSubview:popoverContentView];
+        
+        UITableViewCell *tblCell = [tableView cellForRowAtIndexPath:indexPath];
+        CGRect rectSuper = tblCell.frame;
+        [popOverController presentPopoverFromRect:CGRectMake(0, -5, rectSuper.size.width, rectSuper.size.height) inView:tblCell permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else if(tableView.tag == 2)
+    {
+        NSDictionary *dictLoginDetails = aryUsersLogedIn[indexPath.row];
+        
+        
+        CGRect contentRect = CGRectMake(0, 0, 300, 300);
+
+        UIViewController* popoverContent = [[UIViewController alloc] init];
+        popoverContent.preferredContentSize = contentRect.size;
+        
+        popOverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
+        popOverController.delegate = self;
+        
+        UIView *popoverContentView = [self popOverUsersDetailDesignWithDictionary:dictLoginDetails WithRect:contentRect];
+        [popoverContent.view addSubview:popoverContentView];
+        
+        UITableViewCell *tblCell = [tableView cellForRowAtIndexPath:indexPath];
+        CGRect rectSuper = tblCell.frame;
+        [popOverController presentPopoverFromRect:CGRectMake(0, 0, rectSuper.size.width, rectSuper.size.height) inView:tblCell permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+    }
+    else
+    {
+        NSDictionary *dictLoginDetails = aryUsersLogedIn[indexPath.row];
+        
+        
+        CGRect contentRect = CGRectMake(0, 0, 300, 300);
+        
+        UIViewController* popoverContent = [[UIViewController alloc] init];
+        popoverContent.preferredContentSize = contentRect.size;
+        
+        popOverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
+        popOverController.delegate = self;
+        
+        UIView *popoverContentView = [self popOverUsersDetailDesignWithDictionary:dictLoginDetails WithRect:contentRect];
+        [popoverContent.view addSubview:popoverContentView];
+        
+        UITableViewCell *tblCell = [tableView cellForRowAtIndexPath:indexPath];
+        CGRect rectSuper = tblCell.frame;
+        [popOverController presentPopoverFromRect:CGRectMake(0, 0, rectSuper.size.width, rectSuper.size.height) inView:tblCell permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
     
     NSLog(@"Timer invalidated");
 }
@@ -220,9 +536,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(tableView.tag == 1)
-        return [arrayItem count];
-    else
+        return [aryTaskDetailsList count];
+    else if(tableView.tag == 2)
         return [aryUsersLogedIn count];
+    else
+        return [aryUsersLogedOut count];
 }
 
 //- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -248,10 +566,12 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if(tableView.tag == 1)
-        return 50;
-    else
-        return 50;
+//    if(tableView.tag == 1)
+//        return 50;
+//    else
+//        return 50;
+    
+    return 50;
 }
 
 -(UIView*)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section
@@ -272,7 +592,7 @@
         
         return view;
     }
-    else
+    else if(tableView.tag == 2)
     {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
         
@@ -283,6 +603,21 @@
         [label setText:string];
         [view addSubview:label];
         [view setBackgroundColor:[UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]];
+        
+        return view;
+    }
+    else
+    {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
+        
+        /* Create custom view to display section header... */
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, tableView.frame.size.width, 50)];
+        [label setFont:[UIFont fontWithName:@"Futura-Medium" size:22.0]];
+        NSString *string = @"Out Right Now";
+        [label setText:string];
+        [view addSubview:label];
+        [view setBackgroundColor:[UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]];
+        
         return view;
     }
 }
@@ -295,17 +630,20 @@
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:strCell];
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCell];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            
-            
         }
-        cell.textLabel.text = arrayItem[indexPath.row];
+        
+        NSDictionary *dictTaskDesc = aryTaskDetailsList[indexPath.row];
+        
+        cell.textLabel.text = [dictTaskDesc valueForKey:@"TaskName"];
         return cell;
     }
-    else
+    else if(tableView.tag == 2)
     {
         NSString *strCell = [NSString stringWithFormat:@"strCellUsers"];
         
@@ -317,7 +655,33 @@
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         NSDictionary *dictUserDetails = aryUsersLogedIn[indexPath.row];
+        
+        NSString *strName = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"Name"]];
+        NSString *strCheckInTime = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"CheckInTime"]];
+        
+        cell.textLabel.text = strName;
+        cell.detailTextLabel.text = strCheckInTime;
+        
+        return cell;
+    }
+    else
+    {
+        NSString *strCell = [NSString stringWithFormat:@"strCellUser"];
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:strCell];
+        
+        if(!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strCell];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        NSDictionary *dictUserDetails = aryUsersLogedOut[indexPath.row];
         
         NSString *strName = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"Name"]];
         NSString *strCheckInTime = [NSString stringWithFormat:@"%@",[dictUserDetails valueForKey:@"CheckInTime"]];
@@ -356,7 +720,6 @@
 */
 
 #pragma mark - Touches Method
-
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [timerObj invalidate];
@@ -420,6 +783,98 @@
 -(IBAction)checkInOutEvent:(id)sender
 {
     
+}
+
+#pragma mark - Flip Code
+- (IBAction)flip:(id)sender
+{
+//    if (didFlip == NO)
+//    {
+//        [UIView transitionFromView:viewFlipForTable toView:viewAfterFlip
+//                          duration:0.5
+//                           options:UIViewAnimationOptionTransitionFlipFromLeft
+//                        completion:NULL];
+//        
+//        didFlip = YES; // a = !a;
+//    }
+//    else
+//    {
+//        [UIView transitionFromView:viewAfterFlip toView:viewFlipForTable
+//                          duration:0.5
+//                           options:UIViewAnimationOptionTransitionFlipFromRight
+//                        completion:NULL];
+//        
+//        viewFlipForTable.frame = CGRectMake(0, 0, viewFlipForTable.frame.size.width, viewFlipForTable.frame.size.width);
+//        
+//        didFlip = NO; // a = !a;
+//    }
+    
+    
+    
+    [UIView transitionWithView:viewForFlip
+                      duration:1
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+                        if (!didFlip)
+                        {
+                            [viewFlipForTable setHidden:YES];
+                            [viewAfterFlip setHidden:NO];
+                            didFlip = YES;
+                        }
+                        else
+                        {
+                            [viewFlipForTable setHidden:NO];
+                            [viewAfterFlip setHidden:YES]; //or hide it.
+                            didFlip = NO;
+                        }
+                    }completion:nil];
+}
+
+#pragma mark - PopOver Design
+
+-(UIView*)popOverDesignWithDictionary:(NSDictionary*)dictPopOverItems WithRect:(CGRect)rectPopOver
+{
+    UIView *viewPop = [[UIView alloc] initWithFrame:rectPopOver];
+    viewPop.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *lblTaskName = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 500, 50)];
+    lblTaskName.text = [dictPopOverItems valueForKey:@"TaskName"];
+    lblTaskName.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f];
+    [viewPop addSubview:lblTaskName];
+    
+    UITextView *textViewDescription = [[UITextView alloc] initWithFrame:CGRectMake(20, lblTaskName.frame.size.height+lblTaskName.frame.origin.y+10, rectPopOver.size.width-40, 100)];
+    textViewDescription.backgroundColor = [UIColor whiteColor];
+    textViewDescription.text = [dictPopOverItems valueForKey:@"TaskDescription"];
+    textViewDescription.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f];
+    [viewPop addSubview:textViewDescription];
+    
+    UILabel *lblAssignedTo = [[UILabel alloc] initWithFrame:CGRectMake(20, textViewDescription.frame.size.height+textViewDescription.frame.origin.y+30, 250, 50)];
+    lblAssignedTo.text = [NSString stringWithFormat:@"Assigned To: %@",[dictPopOverItems valueForKey:@"TaskAssginedTo"]];
+    lblAssignedTo.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f];
+    [viewPop addSubview:lblAssignedTo];
+    
+    UILabel *lblPostedBy = [[UILabel alloc] initWithFrame:CGRectMake(350, textViewDescription.frame.size.height+textViewDescription.frame.origin.y+30, 250, 50)];
+    lblPostedBy.text = [NSString stringWithFormat:@"Posted By: %@",[dictPopOverItems valueForKey:@"TaskPostedBy"]];
+    lblPostedBy.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f];
+    [viewPop addSubview:lblPostedBy];
+    
+    UILabel *lblPostedTime = [[UILabel alloc] initWithFrame:CGRectMake(20, lblPostedBy.frame.size.height+lblPostedBy.frame.origin.y, 500, 50)];
+    lblPostedTime.text = [dictPopOverItems valueForKey:@"TaskPostedTime"];
+    lblPostedTime.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f];
+    [viewPop addSubview:lblPostedTime];
+    
+    return viewPop;
+}
+
+-(UIView*)popOverUsersDetailDesignWithDictionary:(NSDictionary*)dictPopOverItems WithRect:(CGRect)rectPopOver
+{
+    NSArray *arrayCheckInValues = [dictPopOverItems valueForKey:@"History"];
+    
+    PopUPView *popoverContentView = [[PopUPView alloc] initWithFrame:rectPopOver andarry:arrayCheckInValues];
+    [popoverContentView setDelegate:self];
+    popoverContentView.backgroundColor = [UIColor clearColor];
+    
+    return popoverContentView;
 }
 
 

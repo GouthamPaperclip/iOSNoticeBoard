@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "PIQRCodeReaderViewController"
+#import "PopUPView.h"
 
 #import "BEMAnalogClockView.h"
 
 @class PIQRCodeReaderViewController;
 
-@interface PITaskViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, BEMAnalogClockDelegate, BEMAnimationDelegate>
+@interface PITaskViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, BEMAnalogClockDelegate, BEMAnimationDelegate, UIPopoverControllerDelegate, PopUPViewDelegate>
 {
     IBOutlet UIView *viewUsers;
     IBOutlet UIView *viewMenuBar;
@@ -21,11 +21,12 @@
     //Table view objects
     IBOutlet UITableView *tableViewTasks;
     IBOutlet UITableView *tableViewUsers;
+    IBOutlet UITableView *tableViewUsersOut;
     
     //Array that contains
-    NSMutableArray *arrayItem;
-    
     NSMutableArray *aryUsersLogedIn;
+    NSMutableArray *aryUsersLogedOut;
+    NSMutableArray *aryTaskDetailsList;
     
     //Working with timer
     NSTimer *timerObj;
@@ -38,6 +39,16 @@
     //Digital time lables under clocks
     IBOutlet UILabel *lblMelborneTime;
     IBOutlet UILabel *lblBangaloreTime;
+    
+    //Flip work
+    BOOL didFlip;
+    IBOutlet UIView *viewForFlip;
+    IBOutlet UIView *viewFlipForTable;
+    IBOutlet UIView *viewAfterFlip;
+    
+    //Popover Object
+    UIPopoverController *popOverController;
+    PopUPView *popUpViewCheckInHistory;
 }
 
 -(IBAction)checkInOutEvent:(id)sender;

@@ -11,7 +11,7 @@
 @implementation BEMHandsAnimation
 - (void)rotateHand:(UIView *)view rotationDegree:(float)degree
 {
-        [UIView animateWithDuration:1
+        [UIView animateWithDuration:0
                               delay:0
                             options: UIViewAnimationOptionCurveEaseInOut
                          animations:^{

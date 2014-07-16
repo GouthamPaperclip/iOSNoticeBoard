@@ -49,6 +49,8 @@
 		7DB1B791196ECC2300679C88 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DB1B78C196ECC2300679C88 /* zbar-helpicons.png */; };
 		7DB1B792196ECC2300679C88 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DB1B78D196ECC2300679C88 /* zbar-samples.png */; };
 		7DB1B794196ECE4E00679C88 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB1B793196ECE4E00679C88 /* libiconv.dylib */; };
+		7DF6BA5119769672004F16C5 /* Flip_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF6BA5019769672004F16C5 /* Flip_Icon.png */; };
+		7DF6BA541976AD73004F16C5 /* PopUPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6BA531976AD73004F16C5 /* PopUPView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,9 @@
 		7DB1B78C196ECC2300679C88 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		7DB1B78D196ECC2300679C88 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
 		7DB1B793196ECE4E00679C88 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		7DF6BA5019769672004F16C5 /* Flip_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Flip_Icon.png; path = Images/Flip_Icon.png; sourceTree = "<group>"; };
+		7DF6BA521976AD73004F16C5 /* PopUPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopUPView.h; path = "Others Classes/PopUPView.h"; sourceTree = "<group>"; };
+		7DF6BA531976AD73004F16C5 /* PopUPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopUPView.m; path = "Others Classes/PopUPView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +182,8 @@
 			children = (
 				7D462C1B196FB0C8009BBD2F /* Reachability.h */,
 				7D462C1C196FB0C8009BBD2F /* Reachability.m */,
+				7DF6BA521976AD73004F16C5 /* PopUPView.h */,
+				7DF6BA531976AD73004F16C5 /* PopUPView.m */,
 			);
 			name = "Other Classes";
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 				7DB1B73F196EB92000679C88 /* SampleQRCodeImage.png */,
 				7DA3E0EA1970014E00E65B94 /* Line_CellSeperator.png */,
 				7D73CB8B197401F10049C7B9 /* TableViewEndLine.png */,
+				7DF6BA5019769672004F16C5 /* Flip_Icon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -456,6 +464,7 @@
 				7D73CB8C197401F10049C7B9 /* TableViewEndLine.png in Resources */,
 				7DB1B78F196ECC2300679C88 /* zbar-back.png in Resources */,
 				7DA3E0E7196FFDE800E65B94 /* LongLine_Vertical.png in Resources */,
+				7DF6BA5119769672004F16C5 /* Flip_Icon.png in Resources */,
 				7DABCC84196915870066C0ED /* Line1.png in Resources */,
 				7DB1B740196EB92000679C88 /* SampleQRCodeImage.png in Resources */,
 				7DABCC5C19690B6F0066C0ED /* Main_iPhone.storyboard in Resources */,
@@ -483,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DB04228196E5C7D00910446 /* BEMHandsAnimation.m in Sources */,
+				7DF6BA541976AD73004F16C5 /* PopUPView.m in Sources */,
 				7DB0422A196E5C7D00910446 /* BEMMinuteHand.m in Sources */,
 				7DB1B738196E91B200679C88 /* ViewController.m in Sources */,
 				7D462C1D196FB0C8009BBD2F /* Reachability.m in Sources */,
