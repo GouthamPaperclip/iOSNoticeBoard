@@ -10,12 +10,21 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Notice Board/ViewControllers/PITaskViewController.m"
+<<<<<<< HEAD
             timestampString = "427208555.974195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "-viewDidLoad"
+=======
+            timestampString = "427114565.186611"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
+            landmarkName = "-touchesBegan:withEvent:"
+>>>>>>> FETCH_HEAD
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
