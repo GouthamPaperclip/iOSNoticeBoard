@@ -388,13 +388,13 @@
     clockViewIndiaTaskVC.faceBackgroundColor = [UIColor whiteColor];
     clockViewIndiaTaskVC.tag = 2;
     clockViewIndiaTaskVC.realTime = YES;
-<<<<<<< HEAD
+
     clockViewIndiaTaskVC.minuteHandLength = clockViewIndiaTaskVC.minuteHandLength-15;
     clockViewIndiaTaskVC.hourHandLength = clockViewIndiaTaskVC.hourHandLength-8;
-=======
+
     clockViewIndiaTaskVC.minuteHandLength = clockViewIndiaTaskVC.minuteHandLength-20;
     clockViewIndiaTaskVC.hourHandLength = clockViewIndiaTaskVC.hourHandLength-5;
->>>>>>> FETCH_HEAD
+
     clockViewIndiaTaskVC.secondHandLength = clockViewIndiaTaskVC.secondHandLength-10;
     clockViewIndiaTaskVC.secondHandColor = [UIColor clearColor];//121 236 253
     clockViewIndiaTaskVC.hourHandColor = [UIColor blackColor];
@@ -421,13 +421,13 @@
     clockViewMelbourneTaskVC.faceBackgroundColor = [UIColor whiteColor];
     clockViewMelbourneTaskVC.tag = 1;
     clockViewMelbourneTaskVC.realTime = YES;
-<<<<<<< HEAD
+
     clockViewMelbourneTaskVC.minuteHandLength = clockViewMelbourneTaskVC.minuteHandLength-15;
     clockViewMelbourneTaskVC.hourHandLength = clockViewMelbourneTaskVC.hourHandLength-8;
-=======
+
     clockViewMelbourneTaskVC.minuteHandLength = clockViewMelbourneTaskVC.minuteHandLength-20;
     clockViewMelbourneTaskVC.hourHandLength = clockViewMelbourneTaskVC.hourHandLength-5;
->>>>>>> FETCH_HEAD
+
     clockViewMelbourneTaskVC.secondHandLength = clockViewMelbourneTaskVC.secondHandLength-10;
     clockViewMelbourneTaskVC.secondHandColor = [UIColor clearColor];//121 236 253
     clockViewMelbourneTaskVC.hourHandColor = [UIColor blackColor];
@@ -885,6 +885,13 @@
     popoverContentView.backgroundColor = [UIColor clearColor];
     
     return popoverContentView;
+}
+
+#pragma mark - PopUp Delegate User History
+
+-(void)selectedValue:(NSNumber *)index
+{
+    
 }
 
 

@@ -81,7 +81,7 @@
     //resultTextView.text = symbol.data;
     NSLog(@"string scanned : %@",symbol.data);
     
-    UIImage *image = [info objectForKey: UIImagePickerControllerOriginalImage];
+    //UIImage *image = [info objectForKey: UIImagePickerControllerOriginalImage];
     
     //resultImageView.image = [info objectForKey: UIImagePickerControllerOriginalImage];
     
